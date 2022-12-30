@@ -6,16 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vtest": "npx vitest --dom"
   },
   "dependencies": {
+    "@vue/test-utils": "^2.2.6",
     "axios": "^1.2.1",
     "vue": "^3.2.45"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "happy-dom": "^8.1.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0",
+    "vitest": "^0.26.2",
     "vue-tsc": "^1.0.11"
   }
 }
