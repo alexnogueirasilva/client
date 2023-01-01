@@ -25,7 +25,6 @@ defineProps(["board"]);
 .columns {
   display: flex;
   flex-direction: row;
-  //justify-content: space-between;
 }
 
 </style>
