@@ -1,8 +1,7 @@
 <template>
   <div class="new-column">
-    {{ columnName }}
-    <input type="text" v-model="columnName">
-    <button v-on:click="board?.addColumn(columnName, true)">add</button>
+    <input class="new-column-input" type="text" v-model="columnName">
+    <button class="new-column-add" v-on:click="board?.addColumn(columnName, true)">add</button>
   </div>
 </template>
 

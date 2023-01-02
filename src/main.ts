@@ -1,7 +1,10 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import BoardServiceHttp from "./services/BoardServiceHttp";
+import AxiosAdapter from "./infra/AxiosAdapter";
 
 const app = createApp(App);
-app.provide("boardService", new BoardServiceHttp());
+const httpClient = new AxiosAdapter();
+const baseUrl = "http://localhost:3000";
+app.provide("boardService", new BoardServiceHttp(httpClient, baseUrl));
 app.mount('#app');

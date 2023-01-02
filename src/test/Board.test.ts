@@ -1,14 +1,14 @@
 import Board from "../entities/Board";
 
 test("Deve criar um quadro", () => {
-  const board = new Board("Project 1");
+  const board = new Board(1,"Project 1");
   expect(board.name).toBe("Project 1");
   expect(board.columns).toHaveLength(0);
   expect(board.getEstimative()).toBe(0);
 });
 
 test("Deve Criar um quadro com 3 colunas", () => {
-    const board = new Board("Project 1");
+    const board = new Board(1,"Project 1");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);
     board.addColumn("Done", false);
@@ -16,7 +16,7 @@ test("Deve Criar um quadro com 3 colunas", () => {
 });
 
 test("Deve Criar um quadro com 3 cartões", () => {
-  const board = new Board("Project 1");
+  const board = new Board(1,"Project 1");
   board.addColumn("Todo", true);
   board.addColumn("Doing", true);
   board.addColumn("Done", false);

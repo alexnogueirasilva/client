@@ -1,10 +1,13 @@
 import Column from "./Column";
 import Card from "./Card";
+import DomainEvents from "../events/DomainEvents";
+import BaseEntity from "./BaseEntity";
 
-export default class Board {
+export default class Board extends BaseEntity {
 
     columns: Column[];
-    constructor(readonly name: string) {
+    constructor(readonly idBoard: number, readonly name: string) {
+        super();
         this.columns = [];
         if (!name) {
             throw new Error("Nome é obrigatório");
@@ -13,6 +16,7 @@ export default class Board {
 
     addColumn(columnName: string, hasEstimative: boolean){
         this.columns.push(new Column(columnName, hasEstimative));
+        this.publish(new DomainEvents("addColumn", {idBoard: this.idBoard, name: columnName, hasEstimative}));
     }
 
     addCard(columnName: string, cardTitle: string, estimative: number){
