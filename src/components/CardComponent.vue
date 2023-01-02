@@ -1,30 +1,31 @@
-<template>
- <div class="card">
-   <span class="card-title">{{ card.title }} </span> <span class="card-estimative">{{ card.estimative }}</span>
-   <br/>
-   <button class="card-estimative-increse" @click="board.incraseEstmative(card)">+</button>
-   <button class="card-estimative-decrese" @click="board.decraseEstmative(card)">-</button>
- </div>
-</template>
-
-<script setup="ts">
+<script setup lang="ts">
 defineProps(["board", "column", "card"]);
-
 </script>
 
-<style scoped>
+<template>
+	<div :style="{'background-color': card.color }" class="card" draggable="true" @dragstart="board.selectCard(column, card)" @dragend="board.resetCard()" @dragover="board.swap(card)">
+		<div class="card-title">
+			{{ card.idCard }} {{ card.title }} (<span class="card-estimative">{{ card.estimative }}</span>)
+		</div>
+		<div>
+			<button class="card-increase-estimative" @click="board?.increaseEstimative(column, card)">+</button>
+			<button class="card-increase-estimative" @click="board?.decreaseEstimative(column, card)">-</button>
+			<button @click="board.deleteCard(column, card.idCard)">delete</button>
+		</div>
+	</div>
+</template>
 
+<style scoped>
 .card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  background-color: #F3E779;
-  margin-right: 5px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+	text-align: center;
+	width: 100%;
+	height: 80px;
+	background-color: #F3E779;
+	border: 1px solid #000;
+	margin-bottom: 10px;
 }
 
+.card-title {
+	padding: 15px;
+}
 </style>
